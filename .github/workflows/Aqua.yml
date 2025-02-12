@@ -2,7 +2,7 @@ name: Aqua
 on:
   push:
     branches:
-      - main
+      - master
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: julia-actions/setup-julia@latest
         with:
-          version: '1'
+          version: 'lts'
       - name: Aqua.jl
         run: julia --color=yes -e 'using Pkg; Pkg.add("Aqua"); Pkg.develop(path=".");
                                    using Aqua, VecchiaMLE; Aqua.test_all(VecchiaMLE)'
